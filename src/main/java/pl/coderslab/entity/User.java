@@ -1,4 +1,4 @@
-package src.main.pl.coderslab.entity;
+package pl.coderslab.entity;
 
 public class User {
     private int id;

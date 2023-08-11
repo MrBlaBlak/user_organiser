@@ -1,6 +1,6 @@
-package src.main.pl.coderslab.entity;
+package pl.coderslab.entity;
 
-import src.main.pl.coderslab.utils.DbUtil;
+import pl.coderslab.utils.DbUtil;
 import org.mindrot.jbcrypt.BCrypt;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
