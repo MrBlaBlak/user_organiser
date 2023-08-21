@@ -2,9 +2,26 @@ package pl.coderslab.entity;
 
 public class User {
     private int id;
-    private String userName;
+    private String name;
     private String email;
     private String password;
+
+    public User(String name, String email, String password) {
+
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User(int id, String name, String email, String password) {
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+
+    public User() {
+    }
 
     public int getId() {
         return id;
@@ -14,12 +31,12 @@ public class User {
         this.id = id;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getEmail() {
@@ -42,7 +59,7 @@ public class User {
     public String toString() {
         return "User{" +
                 "id=" + id +
-                ", userName='" + userName + '\'' +
+                ", userName='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 '}';
@@ -51,7 +68,7 @@ public class User {
         for(User user : users){
             System.out.println("User{" +
                     "id=" + user.id +
-                    ", userName='" + user.userName + '\'' +
+                    ", userName='" + user.name + '\'' +
                     ", email='" + user.email + '\'' +
                     ", password='" + user.password + '\'' +
                     '}');

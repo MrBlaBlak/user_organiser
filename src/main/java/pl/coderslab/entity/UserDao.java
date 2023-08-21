@@ -10,11 +10,11 @@ import java.util.Arrays;
 
 public class UserDao {
     private static final String CREATE_USER_QUERY =
-            "INSERT INTO users(username, email, password) VALUES (?, ?, ?)";
+            "INSERT INTO users(name, email, password) VALUES (?, ?, ?)";
     private static final String READ_USER_QUERY =
             "SELECT * FROM users WHERE id = ?";
     private static final String UPDATE_USER_QUERY =
-            "UPDATE users SET username = ?, email = ?, password = ? WHERE id = ?";
+            "UPDATE users SET name = ?, email = ?, password = ? WHERE id = ?";
     private static final String DELETE_USER_QUERY =
             "DELETE FROM users WHERE id = ?";
     private static final String PRINTALL_USER_QUERY =
@@ -23,7 +23,7 @@ public class UserDao {
     public User createUser(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(CREATE_USER_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
-            preStmt.setString(1, user.getUserName());
+            preStmt.setString(1, user.getName());
             preStmt.setString(2, user.getEmail());
             preStmt.setString(3, hashPassword(user.getPassword()));
             preStmt.executeUpdate();
@@ -49,9 +49,9 @@ public class UserDao {
             if (resultSet.next()) {
                 User user = new User();
                 user.setId(resultSet.getInt(1));
-                user.setPassword(resultSet.getString(2));
+                user.setName(resultSet.getString(2));
                 user.setEmail(resultSet.getString(3));
-                user.setUserName(resultSet.getString(4));
+                user.setPassword(resultSet.getString(4));
                 return user;
             }
         } catch (SQLException e) {
@@ -63,7 +63,7 @@ public class UserDao {
     public void update(User user) {
         try (Connection conn = DbUtil.getConnection()) {
             PreparedStatement preStmt = conn.prepareStatement(UPDATE_USER_QUERY);
-            preStmt.setString(1, user.getUserName());
+            preStmt.setString(1, user.getName());
             preStmt.setString(2, user.getEmail());
             preStmt.setString(3, hashPassword(user.getPassword()));
             preStmt.setString(4, Integer.toString(user.getId()));
@@ -91,7 +91,7 @@ public class UserDao {
             while (rs.next()){
                 User user = new User();
                 user.setId(rs.getInt("id"));
-                user.setUserName(rs.getString("username"));
+                user.setName(rs.getString("name"));
                 user.setEmail(rs.getString("email"));
                 user.setPassword(rs.getString("password"));
                 userTab = addToArray(user, userTab);

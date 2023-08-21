@@ -4,10 +4,10 @@
               auth="Container"
               type="javax.sql.DataSource"
               username="root"
-              password="coderslab"
+              password="7897"
               driverClassName="com.mysql.jdbc.Driver"
               connectionProperties="useUnicode=yes;characterEncoding=utf8;serverTimezone=UTC"
-              url="jdbc:mysql://localhost:3306/workshop3"
+              url="jdbc:mysql://localhost:3306/user_ex"
               maxTotal="100"
               maxIdle="30"
               maxWaitMillis="10000" />
